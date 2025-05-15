@@ -18,14 +18,14 @@ module "vpc" {
 module "ec2" {
   source             = "./modules/ec2"
   vpc_id             = module.vpc.vpc_id
-  subnet_id          = module.vpc.public_subnet_id
+  subnet_ids          = module.vpc.subnet_ids
   security_group_id  = module.vpc.security_group_id
 }
 
 module "alb" {
   source             = "./modules/alb"
   vpc_id             = module.vpc.vpc_id
-  subnet_id          = module.vpc.public_subnet_id
+  subnet_ids          = module.vpc.subnet_ids
   security_group_id  = module.vpc.security_group_id
   instance_id        = module.ec2.instance_id
 }
