@@ -1,5 +1,9 @@
+data "aws_ssm_parameter" "amazon_linux_2" {
+  name = "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+}
+
 resource "aws_instance" "focalboard" {
-  ami                    = "ami-0c55b159cbfafe1f0" # Amazon Linux 2
+  ami                    = data.aws_ssm_parameter.amazon_linux_2.value
   instance_type          = "t2.micro"
   subnet_id              = var.subnet_id
   security_groups        = [var.security_group_id]
@@ -16,6 +20,7 @@ resource "aws_instance" "focalboard" {
     Name = "Focalboard"
   }
 }
+
 
 output "instance_id" {
   value = aws_instance.focalboard.id
