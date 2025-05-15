@@ -3,7 +3,7 @@ resource "aws_lb" "main" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]
-  subnets            = [var.subnet_id]
+  subnets            = var.subnet_ids
 }
 
 resource "aws_lb_target_group" "main" {
@@ -41,3 +41,8 @@ resource "aws_lb_target_group_attachment" "main" {
 output "alb_dns_name" {
   value = aws_lb.main.dns_name
 }
+
+variable "subnet_ids" {
+  type = list(string)
+}
+
