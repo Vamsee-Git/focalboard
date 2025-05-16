@@ -3,7 +3,8 @@ resource "aws_lb" "main" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [var.security_group_id]
-  subnet_ids            = var.subnet_ids
+  subnets = var.subnet_ids
+
 }
 
 resource "aws_lb_target_group" "main" {
