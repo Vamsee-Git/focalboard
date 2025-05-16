@@ -19,7 +19,7 @@ module "ec2" {
   source             = "./modules/ec2"
   vpc_id             = module.vpc.vpc_id
   subnet_id          = module.vpc.subnet_ids[0]
-  security_groups  = module.vpc.security_group_id
+  security_group_id  = module.vpc.security_group_id
 }
 
 module "alb" {
