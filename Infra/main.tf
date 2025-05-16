@@ -25,8 +25,8 @@ module "ec2" {
 module "alb" {
   source             = "./modules/alb"
   vpc_id             = module.vpc.vpc_id
-  subnet_id          = module.vpc.subnet_ids
-  security_groups  = module.vpc.security_group_id
+  subnet_ids          = module.vpc.subnet_ids
+  security_group_id  = module.vpc.security_group_id
   instance_id        = module.ec2.instance_id
 }
 
