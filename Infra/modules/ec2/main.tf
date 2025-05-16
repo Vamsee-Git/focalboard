@@ -5,7 +5,7 @@ data "aws_ssm_parameter" "amazon_linux_2" {
 resource "aws_instance" "focalboard" {
   ami                    = data.aws_ssm_parameter.amazon_linux_2.value
   instance_type          = "t2.micro"
-  subnet_id              = var.subnet_ids
+  subnet_id              = var.subnet_id
   security_groups        = [var.security_group_id]
 
   user_data = <<-EOF
