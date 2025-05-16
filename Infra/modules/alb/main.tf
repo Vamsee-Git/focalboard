@@ -42,7 +42,4 @@ output "alb_dns_name" {
   value = aws_lb.main.dns_name
 }
 
-variable "subnet_ids" {
-  type = list(string)
-}
 
